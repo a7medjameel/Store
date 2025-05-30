@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,3 +13,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::prefix('cms/admin')->group(function () {
+    Route::view('/', 'cms.parent')->name('cms.parent');
+    Route::resource('categories', CategoryController::class);
+});
